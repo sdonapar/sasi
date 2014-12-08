@@ -2,8 +2,36 @@
 <head>
 	<title>Sasidhar Donaparthi</title>
 </head>
+<meta>
+	<script type="text/javascript" src="https://www.google.com/jsapi?autoload={'modules':[{'name':'visualization','version':'1','packages':['timeline']}]}"></script>
+</meta>
 <body>
-	<img src="images/sasi.JPG">
-	<h2>Sasidhar Donaparthi</h2>
+		<div id="header" style="width:600px; height:200px;">
+			<img src="images/sasi.JPG">
+			<h2>Sasidhar Donaparthi</h2>
+		</div>
+		<div id="timeline" style="width:650px; height: 250px;"></div>
+	<script>
+	      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var container = document.getElementById('timeline');
+        var chart = new google.visualization.Timeline(container);
+        var dataTable = new google.visualization.DataTable();
+
+        dataTable.addColumn({ type: 'string', id: 'Company' });
+        dataTable.addColumn({ type:'string', id: 'Role' });
+        dataTable.addColumn({ type: 'date', id: 'Start' });
+        dataTable.addColumn({ type: 'date', id: 'End' });
+        dataTable.addRows([
+          [ 'Boving Fouress', 'Design Engineer',new Date(1789, 3, 29), new Date(1795, 2, 3) ],
+          [ 'Boving Fouress', 'Sr Design Engineer',new Date(1795, 3, 29), new Date(1797, 2, 3) ],
+          [ 'Aspect',      'Asst Manager',new Date(1797, 2, 3),  new Date(1801, 2, 3) ],
+          [ 'i2',  'Data Consulting Manager',new Date(1801, 2, 3),  new Date(1809, 2, 3) ],
+          [ 'Fidelity',  'Project Lead',new Date(1820, 2, 3),  new Date(1825, 2, 3) ]]);
+
+        chart.draw(dataTable);
+      }
+	</script>
 </body>
 </html>
